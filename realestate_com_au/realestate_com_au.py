@@ -60,7 +60,8 @@ class RealestateComAu(Fajita):
         max_price=-1,
         min_bedrooms=0,
         max_bedrooms=-1,
-        property_types=[],  # "house", "unit apartment", "townhouse", "villa", "land", "acreage", "retire", "unitblock",
+        # "house", "unit apartment", "townhouse", "villa", "land", "acreage", "retire", "unitblock",
+        property_types=[],
         min_bathrooms=0,
         min_carspaces=0,
         min_land_size=0,
@@ -107,11 +108,13 @@ class RealestateComAu(Fajita):
             if property_types:
                 query_variables["filters"]["propertyTypes"] = property_types
             if min_bathrooms is not None and min_bathrooms > 0:
-                query_variables["filters"]["minimumBathroom"] = str(min_bathrooms)
+                query_variables["filters"]["minimumBathroom"] = str(
+                    min_bathrooms)
             if min_carspaces is not None and min_carspaces > 0:
                 query_variables["filters"]["minimumCars"] = str(min_carspaces)
             if min_land_size is not None and min_land_size > 0:
-                query_variables["filters"]["landSize"] = {"minimum": str(min_land_size)}
+                query_variables["filters"]["landSize"] = {
+                    "minimum": str(min_land_size)}
             if construction_status:
                 query_variables["filters"]["constructionStatus"] = construction_status
             if keywords:
@@ -147,7 +150,8 @@ class RealestateComAu(Fajita):
         def parse_items(res):
             data = res.json()
             results = (
-                data.get("data", {}).get(f"{channel}Search", {}).get("results", {})
+                data.get("data", {}).get(
+                    f"{channel}Search", {}).get("results", {})
             )
 
             exact_listings = (results.get("exact", {}) or {}).get("items", [])
@@ -166,13 +170,14 @@ class RealestateComAu(Fajita):
                 listings = [
                     listing
                     for listing in listings
-                    if not re.search(pattern, listing.description)
-                ]          
+                    if not re.search(pattern, str(listing.description))
+                ]
 
             return listings
 
         def get_current_page(**kwargs):
-            current_query_variables = json.loads(kwargs["json"]["variables"]["query"])
+            current_query_variables = json.loads(
+                kwargs["json"]["variables"]["query"])
             return current_query_variables["page"]
 
         def next_page(**kwargs):
@@ -191,7 +196,8 @@ class RealestateComAu(Fajita):
 
             data = res.json()
             results = (
-                data.get("data", {}).get(f"{channel}Search", {}).get("results", {})
+                data.get("data", {}).get(
+                    f"{channel}Search", {}).get("results", {})
             )
 
             # total = results.get("totalResultsCount")

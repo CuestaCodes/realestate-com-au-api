@@ -1,8 +1,9 @@
 if __name__ == '__main__':
-	from realestate_com_au import RealestateComAu
+    from realestate_com_au import RealestateComAu
 
-	api = RealestateComAu()
+    api = RealestateComAu()
 
-	# Get property listings
-	listings = api.search(locations=["seventeen seventy, qld 4677"], channel="buy", keywords=["tenant"], exclude_keywords=["pool"])
-	print(listings)
+    # Get property listings
+    listings = api.search(locations=["3205"], channel="buy", keywords=[
+                          "tenant"], exclude_keywords=["pool"])
+    print(listings)
