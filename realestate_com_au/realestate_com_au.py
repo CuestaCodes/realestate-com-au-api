@@ -1,7 +1,6 @@
 """
 Provides linkedin api-related code
 """
-import random
 import logging
 from time import sleep
 from urllib.parse import urlencode
