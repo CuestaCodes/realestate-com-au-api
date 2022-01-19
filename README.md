@@ -1,32 +1,11 @@
-# realestate-com-au-api
+# Data Science Real Estate Project
 
-🏠 Python wrapper for the realestate.com.au API
 
-## Installation
+## Code and Resources Used 
+**Python Version:** 3.9.6
+**Packages:** logging, time, urllib.parse, json, re, fajita, os, pandas, setuptools, ast, pathlib
+**Forked Github:** https://github.com/arapfaik/scraping-glassdoor-selenium  
 
-Using **Python >= 3.6**:
+## YouTube Project Walk-Through
+https://www.youtube.com/watch?v=MpF9HENQjDo&list=PL2zq7klxX5ASFejJj80ob9ZAnBHdz5O1t
 
-```bash
-pip install -e git+https://github.com/tomquirk/realestate-com-au-api.git#egg=realestate_com_au_api
-```
-
-### Example usage
-
-```python
-from realestate_com_au import RealestateComAu
-
-api = RealestateComAu()
-
-# Get property listings
-listings = api.search(locations=["seventeen seventy, qld 4677"], channel="buy", keywords=["tenant"], exclude_keywords=["pool"])
-```
-
-## Data classes
-
-#### [Listing](/realestate_com_au/objects/listing.py#L6)
-
-Data class for a listing. See [listing.py](/realestate_com_au/objects/listing.py#L6) for reference.
-
-## Legal
-
-This code is in no way affiliated with, authorized, maintained, sponsored or endorsed by REA Group or any of its affiliates or subsidiaries. This is an independent and unofficial API. Use at your own risk.
